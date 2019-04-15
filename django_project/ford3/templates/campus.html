@@ -72,10 +72,6 @@
 {% endblock %}
 
 {% block footer %}
-<script type='text/javascript'>
-let sidebar = document.getElementById('sidebar')
-sidebar.classList.toggle('active')
-</script>
-
-
+    <script type="text/javascript"
+            src="{% static 'js/provider.js' %}"></script>
 {% endblock %}
