@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block head %}
+    <script src="https://getbootstrap.com/docs/4.3/examples/offcanvas/offcanvas.js"></script>
+    <script src="{% static 'js/ford3.js' %}"></script>
+{% endblock %}
+
 
  {% block title %}
 	Dashboard
@@ -9,6 +14,32 @@
 {% block side_navbar %}
 {% include 'dashboard_sidebar.html' %}
 {% endblock %}
+
+{% block dashboard_menu %}
+<div class="d-sm-block d-md-none">
+    <a id="sidebar-small-link">
+        <img src="{% static 'images/sidebar.svg' %}" width="20px" height="20px" />
+    </a>
+    <div class="small-sidebar-menu col-12">
+        <ul class="px-1">
+            <li>
+                <a href="{% url 'dashboard' %}" class="text-white px-3">Providers</a>
+            </li>
+            {% if perms.ford3.view_user %}
+            <li>
+                <a href="{% url 'dashboard-users' %}" class="text-white px-3">Users</a>
+            </li>
+            {% endif %}
+            <!-- <hr style='background:white'/>
+            <li>
+                <a href="{% url 'home' %}">My profile</a>
+            </li> -->
+        </ul>
+    </div>
+
+</div>
+{% endblock %}
+
 
 {% block body %}
 <div class='row'>
